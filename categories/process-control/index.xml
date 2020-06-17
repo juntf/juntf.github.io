@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Process Control on 個人空間</title>
+    <title>Process Control on 生而為人</title>
     <link>https://juntf.github.io/categories/process-control/</link>
-    <description>Recent content in Process Control on 個人空間</description>
+    <description>Recent content in Process Control on 生而為人</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
@@ -13,10 +13,10 @@
     
     <item>
       <title>Supervisor - A Process Control System</title>
-      <link>https://juntf.github.io/post/supervisor-a-process-control-system/</link>
+      <link>https://juntf.github.io/post/supervisor-supervisor-a-process-control-system/</link>
       <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://juntf.github.io/post/supervisor-a-process-control-system/</guid>
+      <guid>https://juntf.github.io/post/supervisor-supervisor-a-process-control-system/</guid>
       <description>&lt;h3 id=&#34;install&#34;&gt;Install&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -31,8 +31,7 @@
 pip3 install supervisor
 
 &lt;span class=&#34;c1&#34;&gt;# Generate config file.&lt;/span&gt;
-echo_supervisord_conf &amp;gt; /etc/supervisord.conf    &lt;span class=&#34;c1&#34;&gt;# /path/to/supervisord.conf&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+echo_supervisord_conf &amp;gt; /etc/supervisord.conf    &lt;span class=&#34;c1&#34;&gt;# /path/to/supervisord.conf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
     </item>
