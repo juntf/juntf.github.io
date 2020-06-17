@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Google Cloud | Use the Service Account to control the instance - 生而為人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Jun" /><meta name="description" content="0. ApiClient Install 1 2  pip3 install --upgrade google-api-python-client pip3 install --upgrade oauth2client   1. Import Module &amp;amp; Env 1 2 3 4 5 6 7 8 9  import os from pprint import pprint from googleapiclient import discovery from oauth2client.client import GoogleCredentials os.environ[&amp;#34;GOOGLE_APPLICATION_CREDENTIALS&amp;#34;] = &amp;#34;/path/to/service_account_auth.json&amp;#34; credentials = GoogleCredentials.get_application_default()  " /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.71.0-DEV with theme even" />
+
+
+<link rel="canonical" href="https://juntf.github.io/post/google-cloud-use-the-service-account-to-control-the-instance/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.32b7a6982ac3a5b3a24819487fe38f290f9ff096fb579d16332943c4e52c3870.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Google Cloud | Use the Service Account to control the instance" />
+<meta property="og:description" content="0. ApiClient Install
+
+
+1
+2
+
+
+pip3 install --upgrade google-api-python-client
+pip3 install --upgrade oauth2client
+
+
+1. Import Module &amp; Env
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+import os
+from pprint import pprint
+
+from googleapiclient import discovery
+from oauth2client.client import GoogleCredentials
+
+os.environ[&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;] = &#34;/path/to/service_account_auth.json&#34;
+
+credentials = GoogleCredentials.get_application_default()
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://juntf.github.io/post/google-cloud-use-the-service-account-to-control-the-instance/" />
+<meta property="article:published_time" content="2019-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-15T00:00:00+00:00" />
+<meta itemprop="name" content="Google Cloud | Use the Service Account to control the instance">
+<meta itemprop="description" content="0. ApiClient Install
+
+
+1
+2
+
+
+pip3 install --upgrade google-api-python-client
+pip3 install --upgrade oauth2client
+
+
+1. Import Module &amp; Env
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+import os
+from pprint import pprint
+
+from googleapiclient import discovery
+from oauth2client.client import GoogleCredentials
+
+os.environ[&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;] = &#34;/path/to/service_account_auth.json&#34;
+
+credentials = GoogleCredentials.get_application_default()
+
+">
+<meta itemprop="datePublished" content="2019-10-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="203">
+
+
+
+<meta itemprop="keywords" content="GoogleCloud,Service Account,Instance," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Google Cloud | Use the Service Account to control the instance"/>
+<meta name="twitter:description" content="0. ApiClient Install
+
+
+1
+2
+
+
+pip3 install --upgrade google-api-python-client
+pip3 install --upgrade oauth2client
+
+
+1. Import Module &amp; Env
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+import os
+from pprint import pprint
+
+from googleapiclient import discovery
+from oauth2client.client import GoogleCredentials
+
+os.environ[&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;] = &#34;/path/to/service_account_auth.json&#34;
+
+credentials = GoogleCredentials.get_application_default()
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">生而為人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">生而為人</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Google Cloud | Use the Service Account to control the instance</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-15 </span>
+        <div class="post-category">
+            <a href="/categories/googlecloud/"> GoogleCloud </a>
+            <a href="/categories/service-account/"> Service Account </a>
+            <a href="/categories/example/"> Example </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#0-apiclient-install">0. ApiClient Install</a></li>
+<li><a href="#1-import-module-env">1. Import Module &amp; Env</a></li>
+<li><a href="#2-build-request-set-project-info">2. Build Request &amp; Set Project-Info</a></li>
+<li><a href="#3-show-created-instance-list">3. Show Created Instance List</a></li>
+<li><a href="#4-start-created-instance">4. Start Created Instance</a></li>
+<li><a href="#5-stop-instance">5. Stop Instance</a>
+<ul>
+<li><a href="#reference">[Reference]</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="0-apiclient-install">0. ApiClient Install</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip3 install --upgrade google-api-python-client
+pip3 install --upgrade oauth2client</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="1-import-module-env">1. Import Module &amp; Env</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">from</span> <span class="nn">googleapiclient</span> <span class="kn">import</span> <span class="n">discovery</span>
+<span class="kn">from</span> <span class="nn">oauth2client.client</span> <span class="kn">import</span> <span class="n">GoogleCredentials</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&#34;GOOGLE_APPLICATION_CREDENTIALS&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;/path/to/service_account_auth.json&#34;</span>
+
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">GoogleCredentials</span><span class="o">.</span><span class="n">get_application_default</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="2-build-request-set-project-info">2. Build Request &amp; Set Project-Info</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Build Service</span>
+<span class="n">service</span> <span class="o">=</span> <span class="n">discovery</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s1">&#39;compute&#39;</span><span class="p">,</span> <span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+
+<span class="c1"># Project ID for this request.</span>
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;my-project-id&#39;</span> 
+
+<span class="c1"># Instance zone.</span>
+<span class="n">zone</span> <span class="o">=</span> <span class="s1">&#39;sample-zome&#39;</span> 
+
+<span class="c1"># Instance name.</span>
+<span class="n">instance_name</span> <span class="o">=</span> <span class="s1">&#39;${instance-name}&#39;</span> </code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="3-show-created-instance-list">3. Show Created Instance List</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Execute Request And Show Instances List</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">instances</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="n">zone</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="c1"># TODO: Change code below to process the `response` dict:</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="4-start-created-instance">4. Start Created Instance</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Execute Request And Start Instance</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">instances</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="n">zone</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="c1"># TODO: Change code below to process the `response` dict:</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="5-stop-instance">5. Stop Instance</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># Execute Request And Stop Instance</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">instances</span><span class="p">()</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="n">zone</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+<span class="c1"># TODO: Change code below to process the `response` dict:</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">response</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="reference">[Reference]</h4>
+
+<ul>
+<li><a href="https://github.com/googleapis/google-api-python-client">Github::google-api-python-client</a></li>
+<li><a href="https://cloud.google.com/apis/docs/overview">Google Cloud API Docs</a></li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Jun</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-10-15
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/googlecloud/">GoogleCloud</a>
+          <a href="/tags/service-account/">Service Account</a>
+          <a href="/tags/instance/">Instance</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/mysql-mysql-privileges-operation-simple/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MySQL Privileges Operation - Simple</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/linux-linux-crontab-example/">
+            <span class="next-text nav-default">Linux crontab Example</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="syunn@outlook.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://juntf.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2015 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jun</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-77547435-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
